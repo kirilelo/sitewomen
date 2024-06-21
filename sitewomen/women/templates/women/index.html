@@ -6,7 +6,10 @@
 	<li><div class="article-panel">
 	<p class="last">Дата: {{ p.time_create|date:'d-m-Y H:i:s' }}</p>
 	</div>
-			<h2>{{p.title}}</h2>
+		{% if p.photo %}
+		<p><img class="img-article-left thumb" src="{{ p.photo.url }}" alt="{{ p.title }}"></p>
+		{% endif %}
+		<h2>{{p.title}}</h2>
 	{% autoescape off %}
 	{{p.content|linebreaks|truncatewords:"50"}}
 	{% endautoescape %}
